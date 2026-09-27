@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Renewable Asset Work Orders</title>
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">DEMONSTRATION MODULE</p>
+      <h1>Renewable Asset Work Orders</h1>
+      <p class="subhead">A sample operations module for managing maintenance work across wind, solar, and battery assets.</p>
+    </header>
+
+    <section class="card" aria-labelledby="form-title">
+      <div class="section-heading">
+        <h2 id="form-title">Create work order</h2>
+        <button id="cancel-edit" class="secondary hidden" type="button">Cancel edit</button>
+      </div>
+      <p id="form-message" class="message" role="status"></p>
+      <form id="work-order-form">
+        <input id="work-order-id" type="hidden" />
+        <div class="grid">
+          <label>Work order #<input id="work-order-number" required maxlength="30" placeholder="WO-2026-1004" /></label>
+          <label>Asset name<input id="asset-name" required maxlength="120" placeholder="Turbine 15" /></label>
+          <label>Asset type<select id="asset-type" required><option value="">Select asset type</option><option>Wind Turbine</option><option>Solar Inverter</option><option>Battery Energy Storage</option><option>Substation Equipment</option></select></label>
+          <label>Site<input id="site" required maxlength="120" placeholder="Cedar Ridge Wind Farm" /></label>
+          <label>Priority<select id="priority" required><option>Low</option><option selected>Medium</option><option>High</option><option>Critical</option></select></label>
+          <label>Status<select id="status" required><option>Open</option><option>In Progress</option><option>On Hold</option><option>Completed</option></select></label>
+          <label>Reported date<input id="reported-date" type="date" required /></label>
+          <label>Due date<input id="due-date" type="date" required /></label>
+          <label>Estimated cost (USD)<input id="estimated-cost" type="number" min="0" step="0.01" value="0" required /></label>
+          <label class="full">Description<textarea id="description" maxlength="1000" rows="3" placeholder="Describe the inspection, repair, or fault to address."></textarea></label>
+        </div>
+        <button id="save-button" type="submit">Create work order</button>
+      </form>
+    </section>
+
+    <section class="card" aria-labelledby="list-title">
+      <div class="section-heading">
+        <h2 id="list-title">Work orders</h2>
+        <label class="filter">Filter by status<select id="status-filter"><option value="">All statuses</option><option>Open</option><option>In Progress</option><option>On Hold</option><option>Completed</option></select></label>
+      </div>
+      <p id="list-message" class="message" role="status"></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Work order</th><th>Asset / site</th><th>Priority</th><th>Status</th><th>Due</th><th>Cost</th><th>Actions</th></tr></thead>
+          <tbody id="work-orders"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPfYF3D4H3g=" crossorigin="anonymous"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
